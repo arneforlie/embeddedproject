@@ -14,7 +14,7 @@ Building with [GNU Make](https://www.gnu.org/software/make/) inside [container](
 
 See [native](https://github.com/Praqma/native) repository for more examples.
 
-## Exercise 1 - Create your own fork of this project
+## Exercise 1 - Create your own fork of this project on branch2
 
 Make your own fork of this project for you to develop on.
 
