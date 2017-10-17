@@ -3,13 +3,6 @@ pipeline
     agent any
     stages
     {
-        stage ('checkout SCM')
-        {
-            steps
-            {
-                git 'https://github.com/arneforlie/embeddedproject'
-            }
-        }
         stage ('build')
         {
             steps
