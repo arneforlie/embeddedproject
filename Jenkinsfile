@@ -4,7 +4,7 @@ pipeline
     {
         docker
         {
-            image 'praqma/native-make'
+            image 'arneforlie/native-make'
         }
     }
     stages
