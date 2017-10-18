@@ -15,7 +15,7 @@ pipeline
             steps
             {
                 sh "mkdir -p /home/jenkins/.m2"
-                sh "./gradlew publishToMavenLocal"
+                sh "./gradlew publish"
             }
         }
         stage ('results')
