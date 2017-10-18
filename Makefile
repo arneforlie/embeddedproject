@@ -47,45 +47,45 @@ all: shared_library static_library main test_exe
 
 main: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJ)
-	@$(DIR_GUARD)
-	@$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
-	@$@
+	$(DIR_GUARD)
+	$(LD) $(LDFLAGS) $^ -o $@ && echo "[OK]: $@"
+	$@
 
 static_library: $(OUTPUT_DIR)/lib/libmathy.a
 $(OUTPUT_DIR)/lib/libmathy.a: $(OUTPUT_DIR)/obj/mathy.o
-	@$(DIR_GUARD)
-	@$(AR) $(ARFLAGS) $@ $^ && echo "[OK]: $@"
+	$(DIR_GUARD)
+	$(AR) $(ARFLAGS) $@ $^ && echo "[OK]: $@"
 
 shared_library: $(OUTPUT_DIR)/lib/libmathy.so
 $(OUTPUT_DIR)/lib/libmathy.so: $(OUTPUT_DIR)/obj/mathy.o
-	@$(DIR_GUARD)
-	@$(CXX) $(LDFLAGS) -shared -o $@ $^ && echo "[OK]: $@"
+	$(DIR_GUARD)
+	$(CXX) $(LDFLAGS) -shared -o $@ $^ && echo "[OK]: $@"
 
 .PHONY: test
 test: test_exe
 	$(TEST_EXEC_FILE)
-	@$(TEST_EXEC_FILE) -o out/bin/results_junit.xml --durations yes --reporter junit
+	$(TEST_EXEC_FILE) -o out/bin/results_junit.xml --durations yes --reporter junit
 
 test_exe: $(TEST_EXEC_FILE)
 $(TEST_EXEC_FILE): $(OBJ_TEST)
-	@$(DIR_GUARD)
-	@$(LD) $(LDFLAGS_TEST) $^ -o $@ && echo "[OK]: $@"
-	@$@
+	$(DIR_GUARD)
+	$(LD) $(LDFLAGS_TEST) $^ -o $@ && echo "[OK]: $@"
+	$@
 
 $(OUTPUT_DIR)/obj/%.o: $(PROJECT_DIR)/src/%.cc
-	@$(DIR_GUARD)
-	@$(CXX) $(CXXFLAGS) -c $< $(INC) -o $@ && echo "[OK]: $@"
+	$(DIR_GUARD)
+	$(CXX) $(CXXFLAGS) -c $< $(INC) -o $@ && echo "[OK]: $@"
 
 $(OUTPUT_DIR)/obj/%.o: $(PROJECT_DIR)/tst/%.cc
-	@$(DIR_GUARD)
-	@$(CXX) $(CXXFLAGS_TEST) -c $< $(INC_TEST) -o $@ && echo "[OK]: $@"
+	$(DIR_GUARD)
+	$(CXX) $(CXXFLAGS_TEST) -c $< $(INC_TEST) -o $@ && echo "[OK]: $@"
 
 .PHONY: clean, clear
 clean clear:
-	@rm -fv $(OUTPUT_DIR)/bin/* && echo "[Clean]: $(OUTPUT_DIR)/bin/"
-	@rm -fv $(OUTPUT_DIR)/lib/* && echo "[Clean]: $(OUTPUT_DIR)/lib/"
-	@rm -fv $(OUTPUT_DIR)/obj/* && echo "[Clean]: $(OUTPUT_DIR)/obj/"
+	rm -fv $(OUTPUT_DIR)/bin/* && echo "[Clean]: $(OUTPUT_DIR)/bin/"
+	rm -fv $(OUTPUT_DIR)/lib/* && echo "[Clean]: $(OUTPUT_DIR)/lib/"
+	rm -fv $(OUTPUT_DIR)/obj/* && echo "[Clean]: $(OUTPUT_DIR)/obj/"
 
 .PHONY: archive, zip
 archive zip:
-	@zip -x $(OUTPUT_DIR)/bin/* $(OUTPUT_DIR)/obj/* $(OUTPUT_DIR)/lib/* -q -r $(OUTPUT_DIR)/bin/$(EXEC)-$(shell date '+%F').zip . && echo "[OK]: $(OUTPUT_DIR)/bin/$(EXEC)-$(shell date '+%F').zip"
+	zip -x $(OUTPUT_DIR)/bin/* $(OUTPUT_DIR)/obj/* $(OUTPUT_DIR)/lib/* -q -r $(OUTPUT_DIR)/bin/$(EXEC)-$(shell date '+%F').zip . && echo "[OK]: $(OUTPUT_DIR)/bin/$(EXEC)-$(shell date '+%F').zip"
