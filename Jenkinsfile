@@ -6,7 +6,7 @@ pipeline
         {
             image 'praqma/native-gradle'
             args '-v $HOME/.m2:/home/jenkins/.m2'
-            args '-v $HOME/.gradle:/home/jenins/.gradle'
+            args '-v $HOME/.gradle:/home/jenkins/.gradle'
         }
     }
     stages
@@ -15,9 +15,6 @@ pipeline
         {
             steps
             {
-                sh "uname -a"
-                sh "ls -da /home/jenkins"
-                sh "id -a"
                 sh "./gradlew publishToMavenLocal"
             }
         }
