@@ -20,8 +20,7 @@ pipeline
         {
             steps
             {
-                archiveArtifacts 'out/bin/main'
-                junit '**/out/bin/results_junit.xml'
+                archiveArtifacts 'build/distributions/*.zip'
             }
         }
     }
