@@ -6,7 +6,7 @@ pipeline
         {
             image
             {
-                'node:praqma/native-make'
+                'praqma/native-make'
             }
         }
     }
