@@ -13,7 +13,7 @@ pipeline
         {
             steps
             {
-                sh "gradlew publishToMavenLocal"
+                sh "./gradlew publishToMavenLocal"
             }
         }
         stage ('results')
