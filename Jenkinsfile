@@ -1,6 +1,6 @@
 pipeline
 {
-    agent any
+    agent https://hub.docker.com/r/praqma/native-make/
     stages
     {
         stage ('build')
