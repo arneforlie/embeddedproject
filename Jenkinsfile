@@ -1,6 +1,15 @@
 pipeline
 {
-    agent https://hub.docker.com/r/praqma/native-make/
+    agent
+    {
+        docker
+        {
+            image
+            {
+                'https://hub.docker.com/r/praqma/native-make/'
+            }
+        }
+    }
     stages
     {
         stage ('build')
