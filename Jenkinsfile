@@ -5,8 +5,7 @@ pipeline
         docker
         {
             image 'praqma/native-gradle'
-            args '-v $HOME/.m2:/home/jenkins/.m2'
-            args '-v $HOME/.gradle:/home/jenkins/.gradle'
+            args '-v $HOME/.m2:/home/jenkins/.m2 -v $HOME/.gradle:/home/jenkins/.gradle'
         }
     }
     stages
