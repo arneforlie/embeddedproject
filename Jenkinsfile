@@ -10,6 +10,14 @@ pipeline
     }
     stages
     {
+        stage ('Increment version')
+        {
+             steps
+             {
+                 sh './gradlew incrementVersion'
+             }
+        }
+        
         stage ('build')
         {
             steps
