@@ -13,6 +13,9 @@ pipeline
         {
             steps
             {
+                sh "uname -a"
+                sh "ls -da /home/jenkins"
+                sh "id -a"
                 sh "./gradlew publishToMavenLocal"
             }
         }
