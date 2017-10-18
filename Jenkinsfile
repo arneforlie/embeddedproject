@@ -4,7 +4,7 @@ pipeline
     {
         docker
         {
-            image 'arneforlie/native-make:1.0'
+            image 'praqma/native-gradle'
         }
     }
     stages
