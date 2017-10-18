@@ -13,15 +13,7 @@ pipeline
         {
             steps
             {
-                sh "make clean"
-                sh "make all"
-            }
-        }
-        stage ('test')
-        {
-            steps
-            {
-                sh "make test"
+                sh "gradlew publishToMavenLocal"
             }
         }
         stage ('results')
