@@ -48,7 +48,7 @@ all: shared_library static_library main test_exe
 main: $(EXEC_FILE)
 $(EXEC_FILE): $(OBJ)
 	$(DIR_GUARD)
-	$(LD) $(LDFLAGS) -Wl,-L build/resolvedDep/arneforlie/lib -lmathy $^ -o $@ && echo "[OK]: $@"
+	$(LD) $(LDFLAGS) $^ -Wl,-L build/resolvedDep/arneforlie/lib -lmathy -o $@ && echo "[OK]: $@"
 	$@
 
 static_library: $(OUTPUT_DIR)/lib/libmathy.a
